@@ -5,7 +5,7 @@ class BasePage {
     }
 
     async waitForPageDisplayed() {
-        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 15000);
+        await browser.wait(protractor.ExpectedConditions.visibilityOf(this.getBaseElement()), 10000);
     }
 
 }
