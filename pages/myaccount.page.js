@@ -4,11 +4,8 @@ let myAccountTitleLocator = by.xpath('//*[@id="center_column"]/h1[text()=\'My ac
 
 class MyAccountPage extends BasePage {
 
-    async getAccountTitle() {
-        await this.myAccountTitle().getText();
-    }
-    myAccountTitle() {
-        return element(myAccountTitleLocator)
+    getMyAccountTitleElement() {
+        return element(myAccountTitleLocator);
     }
 
 }

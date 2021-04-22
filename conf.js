@@ -16,6 +16,9 @@ exports.config = {
         browser.waitForAngularEnabled(false);
        // console.log("testStarted")
     },
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 90000
+        },
     params: {
         login: {
            user: 'john',

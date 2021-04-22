@@ -7,12 +7,12 @@ let loginBtnLocator = by.xpath('//a[@class="login"]');
 class MainPage extends BasePage {
 
     async open() {
-        super.open("http://automationpractice.com");
+        await super.open("http://automationpractice.com");
     }
 
     async clickLogin() {
         console.log("Navigate to login page");
-        this.getLoginBtnElement().click();
+        await this.getLoginBtnElement().click();
     }
 
     getBaseElement() {

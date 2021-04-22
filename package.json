@@ -8,5 +8,7 @@
         "protractor": "^7.0.0"
     },
     "devDependencies": {},
-    "scripts": {}
+    "scripts": {
+        "run-test": "./node_modules/.bin/protractor conf.js"
+    }
 }
