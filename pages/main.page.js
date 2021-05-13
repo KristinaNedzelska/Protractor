@@ -1,3 +1,4 @@
+const { allureReporter } = require("jasmine-allure-reporter/src/Jasmine2AllureReporter");
 let BasePage = require("../base/base.page");
 
 let baseElementLocator = by.css('#homepage-slider');
@@ -11,9 +12,11 @@ class MainPage extends BasePage {
     }
 
     async clickLogin() {
+        await allure.createStep(`Navigate to login page`, async () =>{
         console.log("Navigate to login page");
         await this.getLoginBtnElement().click();
-    }
+    })();
+}
 
     getBaseElement() {
         return element(baseElementLocator);

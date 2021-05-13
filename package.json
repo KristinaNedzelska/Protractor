@@ -7,7 +7,10 @@
     "dependencies": {
         "protractor": "^7.0.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "allure-commandline": "^2.13.8",
+        "jasmine-allure-reporter": "^1.0.2"
+    },
     "scripts": {
         "run-test": "./node_modules/.bin/protractor conf.js"
     }

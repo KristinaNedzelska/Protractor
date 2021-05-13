@@ -1,4 +1,5 @@
 
+const { allureReporter } = require("jasmine-allure-reporter/src/Jasmine2AllureReporter");
 const { element, by } = require("protractor");
 let BasePage = require("../base/base.page");
 
@@ -10,9 +11,11 @@ let errorMessageLocator = by.xpath('//*[@id="center_column"]/div[1]/ol/li[text()
 class LoginPage extends BasePage {
 
     async userLogin(email, passwd) {
-        await this.getEmailImput().sendKeys(email);
-        await this.getPasswordInput().sendKeys(passwd);
-        await this.getSignInButton().click();
+        await allure.createStep(`Login with ${email} / ${passwd}`, async () => {
+            await this.getEmailImput().sendKeys(email);
+            await this.getPasswordInput().sendKeys(passwd);
+            await this.getSignInButton().click();
+        })();
     }
 
     getEmailImput() {

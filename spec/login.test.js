@@ -25,7 +25,7 @@ describe('login', function () {
 
     await loginPage.userLogin('zzzopik@i.ua', 'nexsyf');
 
-   await expect(myaccountPage.getMyAccountTitleElement().getText()).toBe("MY ACCOUNT");
+    expect(await myaccountPage.getMyAccountTitleElement().getText()).toBe("MY ACCOUNT");
 
     await browser.sleep(5000);
   })
