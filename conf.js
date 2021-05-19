@@ -11,25 +11,21 @@ exports.config = {
 
         }
     },
-    onPrepare() {
-        browser.manage().timeouts().implicitlyWait(5000);
-        browser.waitForAngularEnabled(false);
+    onPrepare: async function () {
+        beforeEach(async function () {
+            browser.waitForAngularEnabled(false);
+            browser.manage().timeouts().implicitlyWait(2000);
+        });
 
         let AllureReporter = require('jasmine-allure-reporter');
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results'
         }));
 
-
-        jasmine.getEnv().afterEach(function (done) {
-            browser.takeScreenshot().then(function (png) {
-                allure.createAttachment('Screenshot', function () {
-                    return new Buffer(png, 'base64')
-                }, 'image/png')();
-                done();
-            })
+        jasmine.getEnv().afterEach(async function () {
+            await createScreenshotAllure();
+            await browser.restart();
         });
-        // console.log("testStarted")
     },
     jasmineNodeOpts: {
         defaultTimeoutInterval: 90000
@@ -40,4 +36,10 @@ exports.config = {
             password: '1234'
         }
     }
+}
+async function createScreenshotAllure() {
+    let screenshotFile = await browser.takeScreenshot();
+    await allure.createAttachment("Screenshot", () => {
+        return new Buffer.from(screenshotFile, "base64")
+    }, 'image/png')();
 }
