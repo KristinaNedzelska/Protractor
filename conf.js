@@ -1,7 +1,7 @@
 exports.config = {
     framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['./spec/login.test.js'],
+    specs: ['./spec/createAccount.test.js'],
     SELENIUM_PROMISE_MANAGER: false,
     capabilities: {
         browserName: 'chrome',
@@ -24,7 +24,7 @@ exports.config = {
 
         jasmine.getEnv().afterEach(async function () {
             await createScreenshotAllure();
-            await browser.restart();
+            //await browser.restart();
         });
     },
     jasmineNodeOpts: {

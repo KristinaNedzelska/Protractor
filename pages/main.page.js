@@ -1,4 +1,3 @@
-const { allureReporter } = require("jasmine-allure-reporter/src/Jasmine2AllureReporter");
 let BasePage = require("../base/base.page");
 
 let baseElementLocator = by.css('#homepage-slider');
