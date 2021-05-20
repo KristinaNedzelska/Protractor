@@ -1,5 +1,8 @@
 let BasePage = require("../base/base.page");
 
+let { WebButton } = require("../elements/button.element");
+let { WebView } = require("../elements/view.element");
+
 let baseElementLocator = by.css('#homepage-slider');
 let loginBtnLocator = by.xpath('//a[@class="login"]');
 
@@ -18,11 +21,11 @@ class MainPage extends BasePage {
 }
 
     getBaseElement() {
-        return element(baseElementLocator);
+        return new WebView(element(baseElementLocator), "Main Page Base");
     }
 
     getLoginBtnElement() {
-        return element(loginBtnLocator);
+        return new WebButton (element(loginBtnLocator), "Login");
     }
 
 }
