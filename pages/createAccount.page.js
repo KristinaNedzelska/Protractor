@@ -1,4 +1,7 @@
 let BasePage = require("../base/base.page");
+let {WebInput} = require("../elements/input.element");
+let {WebButton} = require("../elements/button.element");
+let {WebView} = require("../elements/view.element");
 
 let persFirstNameInputLocator = by.xpath('//*[@id="customer_firstname"]');
 let persLastNameInputLocator = by.xpath('//*[@id="customer_lastname"]');
@@ -43,31 +46,31 @@ class CreateAccountPage extends BasePage {
     }
 
     getPersFirstNameInput() {
-        return element(persFirstNameInputLocator);
+        return new WebInput(element(persFirstNameInputLocator),"Personal First name");
     };
 
     getPersLastNameInput() {
-        return element(persLastNameInputLocator);
+        return new WebInput(element(persLastNameInputLocator),"Personal Last name");
     };
 
     getPersPasswordInput() {
-        return element(persPasswordInputLocator);
+        return new WebInput(element(persPasswordInputLocator),"Password");
     };
 
     getAddrFirstNameInput() {
-        return element(addrFirstNameInputLocator);
+        return new WebInput(element(addrFirstNameInputLocator),"Address First name");
     };
 
     getAddrLastNameInput() {
-        return element(addrLastNameInputLocator);
+        return new WebInput(element(addrLastNameInputLocator),"Address Last name");
     };
 
     getAddresInput() {
-        return element(addressInputLocator);
+        return new WebInput(element(addressInputLocator), "Address");
     };
 
     getCityInput() {
-        return element(cityInputLocator);
+        return new WebInput(element(cityInputLocator),"City");
     };
 
     getStateDropdown() {
@@ -83,7 +86,7 @@ class CreateAccountPage extends BasePage {
     };
 
     getZipInput() {
-        return element(zipInputLocator);
+        return new WebInput(element(zipInputLocator),"Zip");
     }
 
     getCountryDropdown() {
@@ -96,15 +99,15 @@ class CreateAccountPage extends BasePage {
     };
 
     getMobileInput() {
-        return element(mobileInputLocator);
+        return new WebInput(element(mobileInputLocator), "Mobile");
     };
 
     getAliasInput() {
-        return element(aliasInputLoator);
+        return new WebInput(element(aliasInputLoator),"Alias");
     };
 
     getRegisterButton() {
-        return element(registerButtonLocator);
+        return new WebButton(element(registerButtonLocator),"Register button");
     };
 }
 

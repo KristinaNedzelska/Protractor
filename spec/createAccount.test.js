@@ -4,13 +4,13 @@ let createAccountPage = require("../pages/createAccount.page");
 let myaccountPage = require("../pages/myaccount.page");
 
 
-describe('createNewAccount', function () {
+fdescribe('createNewAccount', function () {
 
     it('Register user', async () => {
         await mainPage.open();
         await mainPage.waitForPageDisplayed();
         await mainPage.clickLogin();
-        await loginPage.createAccount('abcd@i.ua');
+        await loginPage.createAccount('abcgd@i.ua');
         await createAccountPage.fillPersonalInfo('Kris', 'Rock', '1234567');
         await createAccountPage.fillAddressInfo('Kris', 'Rock', 'Washington Street', 'Raynham', '12067', '2814856777', 'My address');
         expect(await myaccountPage.getMyAccountTitleElement().getText()).toBe("MY ACCOUNT");
