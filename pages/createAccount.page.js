@@ -1,6 +1,7 @@
 let BasePage = require("../base/base.page");
 let {WebInput} = require("../elements/input.element");
 let {WebButton} = require("../elements/button.element");
+let {DropDown} = require("../elements/dropdown.element");
 let {WebView} = require("../elements/view.element");
 
 let persFirstNameInputLocator = by.xpath('//*[@id="customer_firstname"]');
@@ -34,7 +35,7 @@ class CreateAccountPage extends BasePage {
             await this.getAddrLastNameInput().sendKeys(last);
             await this.getAddresInput().sendKeys(address);
             await this.getCityInput().sendKeys(city);
-            await this.selectOptionFromStateDropDown(this.getStateDropdown(), 'Texas');
+            await this.selectOptionFromStateDropDown('Texas');
             await this.getZipInput().sendKeys(zip);
             //await this.selectOptionFromCountryDropDown('United States');
             await this.getMobileInput().sendKeys(mobile);
@@ -44,6 +45,10 @@ class CreateAccountPage extends BasePage {
             await browser.sleep(10000);
         })();
     }
+
+    async selectOptionFromStateDropDown(state) {
+        await this.getStateDropdown().selectOption(state);
+    };
 
     getPersFirstNameInput() {
         return new WebInput(element(persFirstNameInputLocator),"Personal First name");
@@ -74,15 +79,7 @@ class CreateAccountPage extends BasePage {
     };
 
     getStateDropdown() {
-        return element(stateInputDropdown);
-    };
-
-    selectOptionFromStateDropDown = async text => {
-        await this.getStateDropdown().click();
-        let select = element(by.xpath('//*[@id="id_state"]'));
-        select.$('[value="43"]').click();
-        await browser.sleep(5000);
-        //await element(`//*[@id="id_state"]/option[text()="${text}"]`).click();
+        return new DropDown(element(stateInputDropdown), "State Dropdown");
     };
 
     getZipInput() {
