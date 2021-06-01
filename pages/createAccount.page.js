@@ -1,8 +1,8 @@
 let BasePage = require("../base/base.page");
-let {WebInput} = require("../elements/input.element");
-let {WebButton} = require("../elements/button.element");
-let {DropDown} = require("../elements/dropdown.element");
-let {WebView} = require("../elements/view.element");
+let { WebInput } = require("../elements/input.element");
+let { WebButton } = require("../elements/button.element");
+let { DropDown } = require("../elements/dropdown.element");
+let { WebView } = require("../elements/view.element");
 
 let persFirstNameInputLocator = by.xpath('//*[@id="customer_firstname"]');
 let persLastNameInputLocator = by.xpath('//*[@id="customer_lastname"]');
@@ -37,12 +37,10 @@ class CreateAccountPage extends BasePage {
             await this.getCityInput().sendKeys(city);
             await this.selectOptionFromStateDropDown('Texas');
             await this.getZipInput().sendKeys(zip);
-            //await this.selectOptionFromCountryDropDown('United States');
+            await this.selectOptionFromCountryDropDown('United States');
             await this.getMobileInput().sendKeys(mobile);
-            await browser.sleep(10000);
             await this.getAliasInput().sendKeys(assign);
             await this.getRegisterButton().click();
-            await browser.sleep(10000);
         })();
     }
 
@@ -50,24 +48,28 @@ class CreateAccountPage extends BasePage {
         await this.getStateDropdown().selectOption(state);
     };
 
+    async selectOptionFromCountryDropDown(country) {
+        await this.getCountryDropdown().selectOption(country);
+    };
+
     getPersFirstNameInput() {
-        return new WebInput(element(persFirstNameInputLocator),"Personal First name");
+        return new WebInput(element(persFirstNameInputLocator), "Personal First name");
     };
 
     getPersLastNameInput() {
-        return new WebInput(element(persLastNameInputLocator),"Personal Last name");
+        return new WebInput(element(persLastNameInputLocator), "Personal Last name");
     };
 
     getPersPasswordInput() {
-        return new WebInput(element(persPasswordInputLocator),"Password");
+        return new WebInput(element(persPasswordInputLocator), "Password");
     };
 
     getAddrFirstNameInput() {
-        return new WebInput(element(addrFirstNameInputLocator),"Address First name");
+        return new WebInput(element(addrFirstNameInputLocator), "Address First name");
     };
 
     getAddrLastNameInput() {
-        return new WebInput(element(addrLastNameInputLocator),"Address Last name");
+        return new WebInput(element(addrLastNameInputLocator), "Address Last name");
     };
 
     getAddresInput() {
@@ -75,7 +77,7 @@ class CreateAccountPage extends BasePage {
     };
 
     getCityInput() {
-        return new WebInput(element(cityInputLocator),"City");
+        return new WebInput(element(cityInputLocator), "City");
     };
 
     getStateDropdown() {
@@ -83,16 +85,11 @@ class CreateAccountPage extends BasePage {
     };
 
     getZipInput() {
-        return new WebInput(element(zipInputLocator),"Zip");
+        return new WebInput(element(zipInputLocator), "Zip");
     }
 
     getCountryDropdown() {
-        return element(countryDropdownLocator);
-    };
-
-    selectOptionFromCountryDropDown = async text => {
-        await this.getCountryDropdown().click();
-        element(`//*[@id="id_country"]/option[text()="${text}"]`).click();
+        return new DropDown(element(countryDropdownLocator), "Country Dropdown");
     };
 
     getMobileInput() {
@@ -100,11 +97,15 @@ class CreateAccountPage extends BasePage {
     };
 
     getAliasInput() {
-        return new WebInput(element(aliasInputLoator),"Alias");
+        return new WebInput(element(aliasInputLoator), "Alias");
     };
 
     getRegisterButton() {
-        return new WebButton(element(registerButtonLocator),"Register button");
+        return new WebButton(element(registerButtonLocator), "Register button");
+    };
+
+    getBaseElement() {
+        return new WebView(element(baseElementLocator), "Main Page Base");
     };
 }
 

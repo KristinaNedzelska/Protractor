@@ -1,9 +1,9 @@
 
 let BasePage = require("../base/base.page");
-let {WebInput} = require("../elements/input.element");
-let {WebButton} = require("../elements/button.element");
-let {WebView} = require("../elements/view.element");
- 
+let { WebInput } = require("../elements/input.element");
+let { WebButton } = require("../elements/button.element");
+let { WebView } = require("../elements/view.element");
+
 let emailInputLocator = by.xpath('//*[@id="email"]');
 let passwordInputLocator = by.xpath('//*[@id="passwd"]');
 let signInButtonLocator = by.xpath('//*[@id="SubmitLogin"]');
@@ -30,7 +30,7 @@ class LoginPage extends BasePage {
     }
 
     getEmailImput() {
-        return new WebInput (element(emailInputLocator), "Email input");
+        return new WebInput(element(emailInputLocator), "Email input");
     };
 
     getPasswordInput() {
@@ -51,6 +51,10 @@ class LoginPage extends BasePage {
 
     getCreateAnAccountButton() {
         return new WebButton(element(createAnAccountButtonLocator), "Create an account button");
+    };
+
+    getBaseElement() {
+        return new WebView(element(baseElementLocator), "Main Page Base");
     };
 
 }

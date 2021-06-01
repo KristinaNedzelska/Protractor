@@ -27,7 +27,6 @@ describe('login', function () {
 
     expect(await myaccountPage.getMyAccountTitleElement().getText()).toBe("MY ACCOUNT");
 
-    await browser.sleep(5000);
   })
 
 });
