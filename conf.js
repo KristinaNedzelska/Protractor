@@ -1,7 +1,8 @@
 exports.config = {
     framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['./spec/login.test.js'],
+    specs: ['./spec/createAccount.test.js',
+'./spec/login.test.js'],
     SELENIUM_PROMISE_MANAGER: false,
     capabilities: {
         browserName: 'chrome',
