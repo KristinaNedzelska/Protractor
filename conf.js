@@ -24,7 +24,7 @@ exports.config = {
 
         jasmine.getEnv().afterEach(async function () {
             await createScreenshotAllure();
-            //await browser.restart();
+            
         });
     },
     jasmineNodeOpts: {

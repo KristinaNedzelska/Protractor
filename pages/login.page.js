@@ -35,7 +35,7 @@ class LoginPage extends BasePage {
     }
 
     async waitForCreateAccountError() {
-        await (new WebView(element(createAccountErrorLocator), "Error Message Account")).waitForVisible(2000);
+        await this.getCreateAccountError().waitForVisible(2000);
     }
 
     async clearEmailAccount() {

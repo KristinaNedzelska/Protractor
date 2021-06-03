@@ -17,7 +17,7 @@ let countryDropdownLocator = by.xpath('//*[@id="id_country"]');
 let mobileInputLocator = by.xpath('//*[@id="phone_mobile"]');
 let aliasInputLoator = by.xpath('//*[@id="alias"]');
 let registerButtonLocator = by.xpath('//*[@id="submitAccount"]');
-let alertTextBoxLocator = by.css('//*[@id="center_column"]/div');
+let alertTextBoxLocator = by.css('.alert.alert-danger');
 
 
 
