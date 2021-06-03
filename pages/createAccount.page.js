@@ -17,6 +17,7 @@ let countryDropdownLocator = by.xpath('//*[@id="id_country"]');
 let mobileInputLocator = by.xpath('//*[@id="phone_mobile"]');
 let aliasInputLoator = by.xpath('//*[@id="alias"]');
 let registerButtonLocator = by.xpath('//*[@id="submitAccount"]');
+let alertTextBoxLocator = by.css('.alert.alert-danger');
 
 
 
@@ -50,6 +51,10 @@ class CreateAccountPage extends BasePage {
 
     async selectOptionFromCountryDropDown(country) {
         await this.getCountryDropdown().selectOption(country);
+    };
+
+    async getAccountpageAlert() {
+        return await this.getAccountPageAlertTextBox().getText();
     };
 
     getPersFirstNameInput() {
@@ -102,6 +107,10 @@ class CreateAccountPage extends BasePage {
 
     getRegisterButton() {
         return new WebButton(element(registerButtonLocator), "Register button");
+    };
+
+    getAccountPageAlertTextBox() {
+        return new WebView(element(alertTextBoxLocator), "Error Message allert");
     };
 
     getBaseElement() {
