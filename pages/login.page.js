@@ -10,6 +10,7 @@ let signInButtonLocator = by.xpath('//*[@id="SubmitLogin"]');
 let errorMessageLocator = by.xpath('//*[@id="center_column"]/div[1]/ol/li[text()=\'Authentication failed.\']');
 let emailCreateInputLocator = by.xpath('//*[@id="email_create"]');
 let createAnAccountButtonLocator = by.xpath('//*[@id="SubmitCreate"]/span');
+let createAccountErrorLocator = by.xpath('//*[@id="create_account_error"]');
 
 
 class LoginPage extends BasePage {
@@ -26,6 +27,20 @@ class LoginPage extends BasePage {
         await allure.createStep(`Create an account ${email1}`, async () => {
             await this.getEmailCreateInput().sendKeys(email1);
             await this.getCreateAnAccountButton().click();
+        })();
+    }
+
+    async getErrorMessageAccount() {
+        return await this.getCreateAccountError().getText();
+    }
+
+    async waitForCreateAccountError() {
+        await (new WebView(element(createAccountErrorLocator), "Error Message Account")).waitForVisible(2000);
+    }
+
+    async clearEmailAccount() {
+        await allure.createStep(`Clean Email Account`, async () => {
+            await this.getEmailCreateInput().clear();
         })();
     }
 
@@ -52,6 +67,11 @@ class LoginPage extends BasePage {
     getCreateAnAccountButton() {
         return new WebButton(element(createAnAccountButtonLocator), "Create an account button");
     };
+
+    getCreateAccountError() {
+        return new WebView(element(createAccountErrorLocator), "Error Message Account");
+    };
+
 
     getBaseElement() {
         return new WebView(element(baseElementLocator), "Main Page Base");

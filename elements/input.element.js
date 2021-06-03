@@ -7,6 +7,10 @@ class WebInput extends WebElement {
         this.protractorElement.sendKeys(text);
     }
 
+    async clear() {
+        await this.protractorElement.clear();
+    }
+
 }
 
-module.exports = { WebInput }; 
+module.exports = { WebInput };

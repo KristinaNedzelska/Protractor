@@ -7,7 +7,7 @@ let randomstring = require('randomstring');
 let mail = randomstring.generate(5);
 
 
-fdescribe('createNewAccount', function () {
+describe('createNewAccount', function () {
 
     it('Register user', async () => {
         await mainPage.open();

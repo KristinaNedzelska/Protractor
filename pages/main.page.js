@@ -14,7 +14,7 @@ class MainPage extends BasePage {
     }
 
     async clickLogin() {
-        await allure.createStep(`Navigate to login page`, async () =>{
+        await allure.createStep(`Navigate to login page`, async () => {
         console.log("Navigate to login page");
         await this.getLoginBtnElement().click();
     })();
