@@ -17,16 +17,15 @@ class MainPage extends BasePage {
 
     async clickLogin() {
         await allure.createStep(`Navigate to login page`, async () => {
-        console.log("Navigate to login page");
-        await this.getLoginBtnElement().click();
-    })();
+            console.log("Navigate to login page");
+            await this.getLoginBtnElement().click();
+        })();
     }
 
     async searchMain(text) {
         await allure.createStep('Search on Main page', async () => {
             console.log("Search on Main Page");
             await this.getSearchInput().sendKeys(text);
-            await browser.sleep(5000);
             await this.getSubmitSearchButton().click();
 
         })();
@@ -38,7 +37,7 @@ class MainPage extends BasePage {
     }
 
     getLoginBtnElement() {
-        return new WebButton (element(loginBtnLocator), "Login");
+        return new WebButton(element(loginBtnLocator), "Login");
     }
 
     getSearchInput() {

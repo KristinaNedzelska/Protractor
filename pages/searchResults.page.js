@@ -3,9 +3,9 @@ let BasePage = require("../base/base.page");
 let { WebButton } = require("../elements/button.element");
 let { WebView } = require("../elements/view.element");
 
-let searchResultsTextBoxLocator = by.xpath('//*[@id="center_column"]/h1/span[2]');
-let firstSearchResultBtn = by.css('.product_list.row > li:nth-child(1) h5 > a');
-let baseElementLocator = by.xpath('//*[@id="columns"]/div[1]/span[2]');
+let searchResultsTextBoxLocator = by.xpath('//*[@class="heading-counter"]');
+let firstSearchResultBtn = by.css('.row > li:first-child h5 > a');
+let baseElementLocator = by.xpath('//*[@class="navigation_page" and text()="Search"]');
 
 class SearchResultsPage extends BasePage {
 
