@@ -9,7 +9,7 @@ describe('Search on Main Page', () => {
         await mainPage.searchMain('Dress');
         expect(await searchResultsPage.searchResultsCount()).toBeGreaterThan(0);
 
-        await searchResultsPage.selectFirstResult();
+        await searchResultsPage.selectSearchResultByIndex(1);
         expect(await detailsPage.getItemName()).toContain('Dress');
     });
 });
